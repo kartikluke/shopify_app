@@ -1,17 +1,18 @@
 # frozen_string_literal: true
+
 require 'rails/generators/base'
 
 module ShopifyApp
   module Generators
-    class HomeControllerGenerator < Rails::Generators::Base
+    class RootControllerGenerator < Rails::Generators::Base
       source_root File.expand_path('../templates', __FILE__)
 
-      def create_home_controller
-        template('home_controller.rb', 'app/controllers/home_controller.rb')
+      def create_root_controller
+        template('root_controller.rb', 'app/controllers/root_controller.rb')
       end
 
-      def create_home_index_view
-        copy_file('index.html.erb', 'app/views/home/index.html.erb')
+      def add_root_index_route
+        route("root :to => 'root#index'")
       end
 
       def embedded_app?

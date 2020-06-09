@@ -27,12 +27,4 @@ class HomeControllerGeneratorTest < Rails::Generators::TestCase
     run_generator
     refute File.exist?('app/javascript/shopify_app/shopify_app.js')
   end
-
-  test "adds home route to routes" do
-    run_generator
-    assert_file "config/routes.rb" do |routes|
-      assert_match "mount ShopifyApp::Engine, at: '/'", routes
-      assert_match "root :to => 'home#index'", routes
-    end
-  end
 end
